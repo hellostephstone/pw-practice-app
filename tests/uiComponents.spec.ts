@@ -132,4 +132,35 @@ test('web tables', async ({ page }) => {
   await page.locator('input-editor').getByPlaceholder('E-mail').fill('test@test.com')
   await page.locator('.nb-checkmark').click()
   await expect(targetRowById.locator('td').nth(5)).toHaveText('test@test.com')
+
+  //test filter of the table
+  const ages = ['20', '30', '40', '200']
+  for (let age of ages) {
+    await page.locator('input-filter').getByPlaceholder('Age').clear()
+    await page.locator('input-filter').getByPlaceholder('Age').fill(age)
+    await page.waitForTimeout(500)
+    const ageRows = page.locator('tbody tr')
+
+    //looping through each of the rows
+    for (let row of await ageRows.all()) {
+      const cellValue = await row.locator('td').last().textContent()
+
+      if (age == '200') {
+        expect(await page.getByRole('table').textContent()).toContain('No data found')
+      } else {
+        expect(cellValue).toEqual(age)
+      }
+    }
+  }
+})
+
+test('datepicker', async ({ page }) => {
+  await page.getByText('Forms').click()
+  await page.getByText('Datepicker').click()
+
+  const calendarInputField = page.getByPlaceholder('Form Picker')
+  await calendarInputField.click()
+
+  await page.locator('[class="day-cell ng-star-inserted"]').getByText('14', { exact: true }).click()
+  await expect(calendarInputField).toHaveValue('Sep 14, 2025')
 })
