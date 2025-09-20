@@ -7,6 +7,13 @@ export class FormLayoutsPage {
     this.page = page
   }
 
+  /**
+   * This method will found out Using the Grid form with user details
+   * @param email - valid email for the test user
+   * @param password - valid password for the test user
+   * @param optionText - Option 1, Option 2, or Disabled Option radio buttons
+   */
+
   async submitUsingTheGridFormWithCredentialsAndSelectOption(email: string, password: string, optionText: string) {
     const usingTheGridForm = this.page.locator('nb-card', {
       hasText: 'Using the Grid',
@@ -16,6 +23,13 @@ export class FormLayoutsPage {
     await usingTheGridForm.getByRole('radio', { name: optionText }).check({ force: true })
     await usingTheGridForm.getByRole('button').click()
   }
+
+  /**
+   * This method will fill out the Inline form with user details
+   * @param name - should be first and last name
+   * @param email - valid email for the test user
+   * @param rememberMe - true or false is user sessions to be saved
+   */
 
   async submitInlineFormWithNameEmailAndCheckbox(name: string, email: string, rememberMe: boolean) {
     const inlineForm = this.page.locator('nb-card', { hasText: 'Inline form' })
