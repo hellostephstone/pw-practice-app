@@ -18,7 +18,7 @@ export class NavigationPage {
   }
 
   async formLayoutsPage() {
-    await this.page.getByText('Forms')
+    await this.selectGroupMenuItem('Forms')
     await this.formLayoutMenuItem.click()
   }
 
