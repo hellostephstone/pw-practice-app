@@ -131,7 +131,3 @@ test('assertions', async ({ page }) => {
   await expect.soft(basicFormButton).toHaveText('Submit')
   await basicFormButton.click()
 })
-
-test('auto waiting', async ({ page }) => {
-
-})
