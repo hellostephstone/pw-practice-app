@@ -3,7 +3,7 @@ import { Locator, Page } from '@playwright/test'
 export class NavigationPage {
   readonly page: Page
   readonly formLayoutMenuItem: Locator
-  readonly datePickerMenuItem: Locator
+  readonly datepickerMenuItem: Locator
   readonly smartTableMenuItem: Locator
   readonly toastrMenuItem: Locator
   readonly tooltipMenuItem: Locator
@@ -11,7 +11,7 @@ export class NavigationPage {
   constructor(page: Page) {
     this.page = page
     this.formLayoutMenuItem = page.getByText('Form Layouts')
-    this.datePickerMenuItem = page.getByText('Datepicker')
+    this.datepickerMenuItem = page.getByText('Datepicker')
     this.smartTableMenuItem = page.getByText('Smart Table')
     this.toastrMenuItem = page.getByText('Toastr')
     this.tooltipMenuItem = page.getByText('Tooltip')
@@ -24,7 +24,7 @@ export class NavigationPage {
 
   async datepickerPage() {
     await this.selectGroupMenuItem('Forms')
-    await this.datePickerMenuItem.click()
+    await this.datepickerMenuItem.click()
   }
 
   async smartTablePage() {
