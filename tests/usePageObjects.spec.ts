@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 
 test("navigate to form page", async ({ page }) => {
   const pm = new PageManager(page)
-  await pm.navigateTo().formLayoutsPage()
+  await pm.navigateTo().formsLayoutsPage()
   await pm.navigateTo().datepickerPage()
   await pm.navigateTo().smartTablePage()
   await pm.navigateTo().toastrPage()
@@ -20,11 +20,12 @@ test("parameterized methods", async ({ page }) => {
   const randomFullName = faker.person.fullName()
   const randomEmail = `${randomFullName.replace(/\s/g, "")}${faker.number.int(1000)}@test.com`
 
-  await pm.navigateTo().formLayoutsPage()
-  await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption("test@test.com", "Welcome1", "Option 1")
-  await pm.onFormLayoutsPage().submitInlineFormWithNameEmailAndCheckbox(randomFullName, randomEmail, true)
+  await pm.navigateTo().formsLayoutsPage()
+  await pm.onFormsLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption("test@test.com", "Welcome1", "Option 1")
+  await pm.onFormsLayoutsPage().submitInlineFormWithNameEmailAndCheckbox(randomFullName, randomEmail, false)
+  await page.screenshot({path: 'screenshots/formsLayoutsPage.png'})
 
-  // await pm.navigateTo().datepickerPage()
-  // await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(5)
-  // await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 15)
+  await pm.navigateTo().datepickerPage()
+  await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(5)
+  await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 15)
 })

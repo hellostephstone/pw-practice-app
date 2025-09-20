@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test"
 import { HelperBase } from "./helperBase"
 
-export class FormLayoutsPage extends HelperBase {
+export class FormsLayoutsPage extends HelperBase {
 
   constructor(page: Page) {
     super(page)

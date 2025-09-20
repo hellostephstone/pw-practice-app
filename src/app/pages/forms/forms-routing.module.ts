@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FormsComponent } from './forms.component';
-import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
+import { FormsLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 
 const routes: Routes = [
@@ -12,11 +12,11 @@ const routes: Routes = [
     children: [
       {
         path: 'layouts',
-        component: FormLayoutsComponent,
+        component: FormsLayoutsComponent,
       },
       {
         path: 'layouts',
-        component: FormLayoutsComponent,
+        component: FormsLayoutsComponent,
       },
       {
         path: 'datepicker',

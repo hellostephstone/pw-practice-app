@@ -18,7 +18,7 @@ export class NavigationPage extends HelperBase {
     this.tooltipMenuItem = page.getByText("Tooltip")
   }
 
-  async formLayoutsPage() {
+  async formsLayoutsPage() {
     await this.selectGroupMenuItem("Forms")
     await this.formLayoutMenuItem.click()
     await this.waitForNumberOfSeconds(2)
