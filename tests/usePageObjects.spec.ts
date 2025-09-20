@@ -16,12 +16,8 @@ test('navigate to form page', async ({ page }) => {
 
 test('parameterized methods', async ({ page }) => {
   const pm = new PageManager(page)
-
   await pm.navigateTo().formLayoutsPage()
-  await pm
-    .onFormLayoutsPage()
-    .submitUsingTheGridFormWithCredentialsAndSelectOption('test@test.com', `Welcome1`, 'Option 1')
-
+  await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption('test@test.com', `Welcome1`, 'Option 1')
   await pm.onFormLayoutsPage().submitInlineFormWithNameEmailAndCheckbox('Jane Smith', 'Jane@test.com', true)
   await pm.navigateTo().datepickerPage()
   await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(5)
