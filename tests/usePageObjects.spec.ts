@@ -22,12 +22,12 @@ test("parameterized methods", async ({ page }) => {
 
   await pm.navigateTo().formsLayoutsPage()
   await pm.onFormsLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption(process.env.USERNAME, process.env.PASSWORD, "Option 1")
+  // await page.screenshot({ path: "screenshots/formsLayoutsPage.png" })
+  // const buffer = await page.screenshot()
+  // console.log(buffer.tString("base64")) could use for something like slack
   await pm.onFormsLayoutsPage().submitInlineFormWithNameEmailAndCheckbox(randomFullName, randomEmail, false)
-  await page.screenshot({ path: "screenshots/formsLayoutsPage.png" })
-  await page.locator("nb-card", { hasText: "Inline form" }).screenshot({ path: "screenshots/inlineForm.png" })
-  const buffer = await page.screenshot()
-  // console.log(buffer.toString("base64")) could use for something like slack
-  await pm.navigateTo().datepickerPage()
-  await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(5)
-  await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 15)
+  // await page.locator("nb-card", { hasText: "Inline form" }).screenshot({ path: "screenshots/inlineForm.png" })
+  // await pm.navigateTo().datepickerPage()
+  // await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(5)
+  // await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 15)
 })
