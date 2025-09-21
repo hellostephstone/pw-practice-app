@@ -3,10 +3,10 @@ import { PageManager } from "../page-objects/pageManager"
 import { faker } from "@faker-js/faker"
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/')
+  await page.goto("/")
 })
 
-test("navigate to form page @smoke @regression", async ({ page }) => {
+test("navigate to form page @smoke", async ({ page }) => {
   const pm = new PageManager(page)
   await pm.navigateTo().formsLayoutsPage()
   await pm.navigateTo().datepickerPage()
@@ -27,7 +27,13 @@ test("parameterized methods @smoke", async ({ page }) => {
   // console.log(buffer.tString("base64")) could use for something like slack
   await pm.onFormsLayoutsPage().submitInlineFormWithNameEmailAndCheckbox(randomFullName, randomEmail, false)
   // await page.locator("nb-card", { hasText: "Inline form" }).screenshot({ path: "screenshots/inlineForm.png" })
-  // await pm.navigateTo().datepickerPage()
-  // await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(5)
-  // await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 15)
+  await pm.navigateTo().datepickerPage()
+  await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(5)
+  await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 15)
+})
+
+test.only("testing with argos ci", async ({ page }) => {
+  const pm = new PageManager(page)
+  await pm.navigateTo().formsLayoutsPage()
+  await pm.navigateTo().datepickerPage()
 })
